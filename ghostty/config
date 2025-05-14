@@ -1,0 +1,11 @@
+initial-command=/opt/homebrew/bin/tmux new -A -s main
+
+window-decoration = none
+window-padding-balance = true
+window-padding-color = extend-always
+maximize=true
+
+theme = catppuccin-mocha.conf
+
+keybind = shift+up=scroll_page_lines:-50
+keybind = shift+down=scroll_page_lines:50

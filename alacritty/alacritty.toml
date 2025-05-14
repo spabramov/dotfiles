@@ -1,0 +1,29 @@
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+
+[window]
+title = "terminal"
+startup_mode = "Maximized"
+decorations = "buttonless"
+padding = { x = 1, y = 0 }
+dynamic_padding = true
+dynamic_title = true
+opacity = 1.0
+blur = true
+option_as_alt = "Both"
+
+[colors]
+vi_mode_cursor = { text = "CellBackground", cursor = "#feca88" }
+
+[keyboard]
+bindings = [{ key = "Key6", mods = "Control", chars = "\u001e" }]
+
+[general]
+import = ["~/.config/alacritty/themes/themes/catppuccin.toml"]

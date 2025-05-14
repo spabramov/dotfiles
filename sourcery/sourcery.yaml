@@ -1,0 +1,13 @@
+coding_assistant:
+  enabled: true
+
+rule_settings:
+  rule_types:
+  - refactoring
+  - suggestion
+  - comment
+  disable:
+  - assign-if-exp
+  - use-next
+
+  python_version: '3.10'
