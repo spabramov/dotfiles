@@ -391,11 +391,11 @@
     line-numbers-right-format = " {np:>3} │"
     # Diff contents
     inline-hint-style = syntax
-    minus-style = syntax "#330011"
-    minus-emph-style = syntax "#80002a"
+    minus-style = syntax "#701310"
+    minus-emph-style = syntax "#701310"
     minus-non-emph-style = syntax auto
-    plus-style = syntax "#001a00"
-    plus-emph-style = syntax "#003300"
+    plus-style = syntax "#41410b"
+    plus-emph-style = syntax "#41410b"
     plus-non-emph-style = syntax auto
     whitespace-error-style = "#FB4934" reverse
     # Commit hash
@@ -536,3 +536,130 @@
     blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
     blame-palette = "#000000" "#343434"
     zero-style = dim
+
+[delta "platypus"]
+    # Author: https://github.com/sarpuser
+    dark = true
+    side-by-side = true
+    true-color = always
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [M]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    file-style = "#ff9b00" ul bold
+    file-decoration-style = "#ea00ff" box ul
+    zero-style = syntax
+    syntax-theme = Solarized (dark)
+    commit-decoration-style ="#ea00ff" ul
+    hunk-header-decoration-style = omit
+    hunk-header-file-style = "#ff9b00" ul bold
+    hunk-header-line-number-style = "#ffd21a" bold
+    hunk-header-style = line-number syntax bold italic
+    line-numbers = true
+    line-numbers-left-format = "{nm:>1}|"
+    line-numbers-left-style = "#ea00ff"
+    line-numbers-minus-style = "#ff0051" bold
+    line-numbers-plus-style = "#1ac71e" bold
+    line-numbers-right-format = "{np:>1}|"
+    line-numbers-right-style = "#ea00ff"
+    line-numbers-zero-style = "#aaaaaa" italic
+    minus-emph-style = syntax bold "#b80000"
+    minus-style = syntax "#5d001e"
+    plus-emph-style = syntax bold "#1a861a"
+    plus-style = syntax "#2a5e37"
+    whitespace-error-style = "#280050"
+    wrap-max-lines = unlimited
+    wrap-right-percent = 1
+
+[delta "weeping-willow"]
+    # See 'mirthful-willow' for light mode version.
+    # Heavily inspired by the themes above. Thank you. <3
+    # author: https://github.com/lvdh
+    dark = true
+    right-arrow = >
+    syntax-theme = Coldark-Dark
+    # -- git
+    blame-format = "{author:<18} ({commit:>7}) ┊{timestamp:^16}┊ "
+    blame-palette = "purple darkmagenta darkviolet darkslateblue blueviolet rebeccapurple slateblue mediumpurple mediumslateblue"
+    commit-decoration-style = none
+    commit-style = bold white olive
+    # -- grep
+    grep-file-style = olive
+    grep-line-number-style = orange
+    # -- diff
+    keep-plus-minus-markers = true
+    line-numbers = true
+    line-numbers-minus-style = red
+    line-numbers-plus-style = green
+    line-numbers-left-style = grey
+    line-numbers-left-format = "{nm:>1}┊"
+    line-numbers-right-style = orange
+    line-numbers-right-format = "{np:>1}┊"
+    line-numbers-zero-style = gray
+    minus-emph-style = lemonchiffon crimson underline
+    minus-empty-line-marker-style = normal maroon
+    minus-style = syntax darkred
+    plus-emph-style = lemonchiffon olivedrab underline
+    plus-empty-line-marker-style = normal seagreen
+    plus-style = syntax darkgreen
+    whitespace-error-style = black white
+    zero-style = syntax
+    # -- decorations
+    file-decoration-style = olive overline
+    file-added-label = [+]
+    file-copied-label = [=]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [>]
+    file-style = olive bold
+    hunk-header-decoration-style = none
+    hunk-header-file-style = olive
+    hunk-header-line-number-style = orange
+    hunk-header-style = file line-number purple
+
+[delta "mirthful-willow"]
+    # See 'weeping-willow' for dark mode version.
+    # Heavily inspired by the themes above. Thank you. <3
+    # author: https://github.com/lvdh
+    light = true
+    right-arrow = >
+    syntax-theme = Coldark-Cold
+    # -- git
+    blame-format = "{author:<18} ({commit:>7}) ┊{timestamp:^16}┊ "
+    blame-palette = "whitesmoke lavender palegreen powderblue khaki lightcoral silver palegreen gainsboro"
+    commit-decoration-style = none
+    commit-style = bold white darkgoldenrod
+    # -- grep
+    grep-file-style = darkgoldenrod
+    grep-line-number-style = orange
+    # -- diff
+    keep-plus-minus-markers = true
+    line-numbers = true
+    line-numbers-minus-style = red
+    line-numbers-plus-style = green
+    line-numbers-left-style = darkgrey
+    line-numbers-left-format = "{nm:>1}┊"
+    line-numbers-right-style = orange
+    line-numbers-right-format = "{np:>1}┊"
+    line-numbers-zero-style = darkgray
+    minus-emph-style = black tomato underline
+    minus-empty-line-marker-style = normal orangered
+    minus-style = syntax lightpink
+    plus-emph-style = black limegreen underline
+    plus-empty-line-marker-style = normal forestgreen
+    plus-style = syntax lightgreen
+    whitespace-error-style = black white
+    zero-style = syntax
+    # -- decorations
+    file-decoration-style = darkgoldenrod overline
+    file-added-label = [+]
+    file-copied-label = [=]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [>]
+    file-style = darkgoldenrod bold
+    hunk-header-decoration-style = none
+    hunk-header-file-style = darkgoldenrod
+    hunk-header-line-number-style = orange
+    hunk-header-style = file line-number purple

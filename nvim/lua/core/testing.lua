@@ -30,6 +30,7 @@ return {
                     runner = 'pytest',
                     args = { '--log-level', 'DEBUG' },
                 },
+                require 'rustaceanvim.neotest',
             },
         }
         require('neotest').setup(opts)

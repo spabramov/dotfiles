@@ -27,5 +27,6 @@ return {
 
             return notify(message, level, merged_opts)
         end
+        notify.setup { background_colour = '#000000' }
     end,
 }

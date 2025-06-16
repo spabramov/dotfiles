@@ -14,6 +14,7 @@ return {
             -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
             -- used for completion, annotations and signatures of Neovim apis
             { 'folke/neodev.nvim', opts = { library = { plugins = { 'neotest' }, types = true } } },
+            { 'folke/lazydev.nvim', ft = 'lua', opts = { library = { path = '{3rd}/luv/library', words = { 'vim%.uv' } } } },
         },
         config = function()
             -- Brief aside: **What is LSP?**
@@ -129,9 +130,11 @@ return {
             --  By default, Neovim doesn't support everything that is in the LSP specification.
             --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
             --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            -- local capabilities = vim.lsp.protocol.make_client_capabilities()
             -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-            capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+            -- capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            -- capabilities['general'] = { positionEncodings = { 'utf-16' } }
 
             -- Enable the following language servers
             --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -145,9 +148,18 @@ return {
             local servers = {
                 -- clangd = {},
                 -- gopls = {},
-                taplo = { settings = { formatting = { column_width = 99, array_auto_expand = false } } },
-                ruff = {},
-                rust_analyzer = {},
+                taplo = {
+                    -- settings = { formatting = { column_width = 99, array_auto_expand = false } }
+                },
+                ruff = {
+                    capabilities = {
+                        general = {
+                            -- positionEncodings = { "utf-8", "utf-16", "utf-32" }  <--- this is the default
+                            positionEncodings = { 'utf-16' },
+                        },
+                    },
+                },
+                -- rust_analyzer = {},
                 sourcery = {},
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
@@ -158,20 +170,20 @@ return {
                 -- tsserver = {},
                 --
 
-                lua_ls = {
-                    -- cmd = {...},
-                    -- filetypes = { ...},
-                    -- capabilities = {},
-                    settings = {
-                        Lua = {
-                            completion = {
-                                callSnippet = 'Replace',
-                            },
-                            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-                            -- diagnostics = { disable = { 'missing-fields' } },
-                        },
-                    },
-                },
+                -- lua_ls = {
+                --     -- cmd = {...},
+                --     -- filetypes = { ...},
+                --     -- capabilities = {},
+                --     settings = {
+                --         Lua = {
+                --             completion = {
+                --                 callSnippet = 'Replace',
+                --             },
+                --             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                --             -- diagnostics = { disable = { 'missing-fields' } },
+                --         },
+                --     },
+                -- },
             }
 
             -- Ensure the servers and tools above are installed
@@ -185,12 +197,13 @@ return {
             -- You can add other tools here that you want Mason to install
             -- for you, so that they are available from within Neovim.
             local ensure_installed = vim.tbl_keys(servers or {})
+
             vim.list_extend(ensure_installed, {
                 -- toml
                 'taplo',
                 -- lua
                 'stylua', -- Used to format Lua code
-                'lua_ls',
+                -- 'lua_ls',
                 -- text
                 -- 'vale',
                 'markdownlint',
@@ -199,14 +212,16 @@ return {
                 -- python
                 'sourcery',
                 -- rust
-                'rust_analyzer',
+                -- 'rust_analyzer',
             })
             require('mason-tool-installer').setup {
                 run_on_start = true,
-                ensure_installed = ensure_installed,
+                -- ensure_installed = ensure_installed,
             }
 
             require('mason-lspconfig').setup {
+                ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+                automatic_installation = false,
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}

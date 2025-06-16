@@ -5,7 +5,7 @@ window-padding-balance = true
 window-padding-color = extend-always
 maximize=true
 
-theme = catppuccin-mocha.conf
+theme = gruvbox-material-hard-dark
 
 keybind = shift+up=scroll_page_lines:-50
 keybind = shift+down=scroll_page_lines:50

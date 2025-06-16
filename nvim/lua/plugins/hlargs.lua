@@ -21,7 +21,7 @@ return {
             --
             vim.cmd.hi('clear', 'Hlargs')
             vim.cmd.hi('link', 'Hlargs', '@variable.parameter')
-            vim.cmd.hi('Hlargs', 'gui=bold')
+            -- vim.cmd.hi('Hlargs', 'gui=bold')
         end,
     },
 }

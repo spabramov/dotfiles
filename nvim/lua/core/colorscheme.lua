@@ -43,7 +43,7 @@ return {
     {
         'catppuccin/nvim',
         name = 'catppuccin',
-        enabled = true,
+        enabled = false,
         priority = 1000,
         config = function()
             require('catppuccin').setup {
@@ -79,10 +79,36 @@ return {
             vim.cmd.colorscheme 'everforest'
         end,
     },
+    {
+        'ellisonleao/gruvbox.nvim',
+        priority = 1000,
+        config = function()
+            require('gruvbox').setup {
+                terminal_colors = true,
+                contrast = 'hard',
+                transparent_mode = false,
+                italic = {
+                    strings = false,
+                    comments = false,
+                    operators = false,
+                    folds = false,
+                },
+            }
+            vim.cmd.colorscheme 'gruvbox'
+
+            -- You can configure highlights by doing something like:
+            vim.cmd.hi('clear', 'SignColumn')
+            vim.cmd.hi('clear', 'DiagnosticSignOk')
+            vim.cmd.hi('clear', 'DiagnosticSignInfo')
+            vim.cmd.hi('clear', 'DiagnosticSignHint')
+            vim.cmd.hi('clear', 'DiagnosticSignWarn')
+            vim.cmd.hi('clear', 'DiagnosticSignError')
+        end,
+    },
     -- {
-    --   'sainnhe/gruvbox-material',
-    --   config = function()
-    --     vim.cmd.colorscheme 'gruvbox-material'
-    --   end,
+    --     'sainnhe/gruvbox-material',
+    --     config = function()
+    --         vim.cmd.colorscheme 'gruvbox-material'
+    --     end,
     -- },
 }
