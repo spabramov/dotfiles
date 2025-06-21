@@ -47,6 +47,7 @@ return {
       vim.cmd.hi("clear", "DiagnosticSignHint")
       vim.cmd.hi("clear", "DiagnosticSignWarn")
       vim.cmd.hi("clear", "DiagnosticSignError")
+      vim.cmd.hi("link", "@sql.injected", "@text.emphasis")
     end,
   },
 }

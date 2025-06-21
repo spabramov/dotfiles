@@ -26,6 +26,7 @@ return {
         "python",
         "rust",
         "dockerfile",
+        "nim_format_string",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
