@@ -1,5 +1,7 @@
 initial-command=/opt/homebrew/bin/tmux new -A -s main
 
+font-size = 15
+
 window-decoration = none
 window-padding-balance = true
 window-padding-color = extend-always
@@ -9,3 +11,4 @@ theme = gruvbox-material-hard-dark
 
 keybind = shift+up=scroll_page_lines:-50
 keybind = shift+down=scroll_page_lines:50
+

@@ -31,11 +31,8 @@ require("lazy").setup({ import = "plugins" }, {
   performance = {
     rtp = {
       disabled_plugins = {
-        "gzip",
-        "tarPlugin",
         "tohtml",
         "tutor",
-        "zipPlugin",
       },
     },
   },

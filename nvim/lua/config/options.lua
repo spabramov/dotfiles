@@ -102,6 +102,7 @@ vim.filetype.add({
     env = "sh",
     md = "markdown.pandoc",
     ebnf = "ebnf",
+    tgz = "zip",
   },
   pattern = {
     ["[jt]sconfig.*.json"] = "jsonc",

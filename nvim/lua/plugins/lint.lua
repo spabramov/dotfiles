@@ -7,12 +7,15 @@ return {
       local lint = require("lint")
 
       lint.linters_by_ft = lint.linters_by_ft or {}
-      lint.linters_by_ft["python"] = { "mypy", "pylint" }
+      lint.linters_by_ft["python"] = { "mypy" }
       lint.linters_by_ft["json"] = { "jsonlint" }
       lint.linters_by_ft["markdown"] = { "markdownlint" }
       lint.linters_by_ft["dokerfile"] = { "hadolint" }
       -- lint.linters_by_ft['text'] = { 'vale' }
       lint.linters_by_ft["rust"] = { "clippy" }
+
+      -- lint.linters.pylint.cmd = "python"
+      -- lint.linters.pylint.args = { "-m", "pylint", "-f", "json" }
 
       -- local mypy = lint.linters.mypy
       -- mypy.cmd = "mypy"

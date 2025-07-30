@@ -391,12 +391,12 @@
     line-numbers-right-format = " {np:>3} │"
     # Diff contents
     inline-hint-style = syntax
-    minus-style = syntax "#701310"
-    minus-emph-style = syntax "#701310"
-    minus-non-emph-style = syntax auto
-    plus-style = syntax "#41410b"
-    plus-emph-style = syntax "#41410b"
-    plus-non-emph-style = syntax auto
+    minus-style = syntax "#422d33"
+    minus-emph-style = syntax "#751709"
+    minus-non-emph-style = syntax "#422d33"
+    plus-style = syntax "#0a4020"
+    plus-emph-style = syntax "#366800"
+    plus-non-emph-style = syntax "#0a4020"
     whitespace-error-style = "#FB4934" reverse
     # Commit hash
     commit-decoration-style = normal box

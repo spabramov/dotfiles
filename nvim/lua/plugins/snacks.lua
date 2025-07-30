@@ -13,6 +13,7 @@ return {
       enabled = true,
       follow_file = true,
       icons = { files = { enabled = true } },
+      include = { ".git", ".env", ".gitlab-ci.yaml" },
     },
     indent = { enabled = true },
     input = { enabled = true },
