@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
+vim.g.treesitter_branch = "main"
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -98,14 +99,40 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
 vim.filetype.add({
-  extension = {
-    env = "sh",
-    md = "markdown.pandoc",
-    ebnf = "ebnf",
-    tgz = "zip",
-  },
-  pattern = {
-    ["[jt]sconfig.*.json"] = "jsonc",
-    ["%.env%.[%w_.-]+"] = "sh",
-  },
+    extension = {
+        env = "sh",
+        md = "markdown.pandoc",
+        ebnf = "ebnf",
+        tgz = "zip",
+    },
+    pattern = {
+        ["[jt]sconfig.*.json"] = "jsonc",
+        ["%.env%.[%w_.-]+"] = "sh",
+    },
 })
+
+local _open_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or 'rounded' -- or whichever border kind you want
+    return _open_floating_preview(contents, syntax, opts, ...)
+end
+
+-- local _border = "rounded"
+--
+-- local hover = vim.lsp.buf.hover
+-- ---@diagnostic disable-next-line: duplicate-set-field
+-- vim.lsp.buf.hover = function()
+--     return hover({ border = _border })
+-- end
+--
+-- -- local sig_help = vim.lsp.buf.signature_help
+-- ---@diagnostic disable-next-line: duplicate-set-field
+-- vim.lsp.buf.signature_help = function()
+--     return sig_help({ border = _border })
+-- end
+--
+-- vim.diagnostic.config {
+--     float = { border = _border }
+-- }

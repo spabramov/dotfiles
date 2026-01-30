@@ -27,9 +27,13 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 --
 --  See `:help wincmd` for a list of all window commands
 map("n", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Move focus to the left window" })
+map("n", "<C-Left>", "<cmd>wincmd h<cr>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Move focus to the right window" })
+map("n", "<C-Right>", "<cmd>wincmd l<cr>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Move focus to the lower window" })
+map("n", "<C-Down>", "<cmd>wincmd j<cr>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Move focus to the upper window" })
+map("n", "<C-Up>", "<cmd>wincmd k<cr>", { desc = "Move focus to the upper window" })
 
 map("n", "]t", "<cmd>tabnext<CR>", { desc = "Move focus to the next window" })
 map("n", "[t", "<cmd>tabprevious<CR>", { desc = "Move focus to the previous window" })
@@ -43,23 +47,28 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Center screen when scrolling down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Center screen when scrolling up" })
 map("n", "G", "Gzz", { desc = "center screen after Goto End" })
 
-map("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("v", "<M-j>", "<cmd>m '>+1<cr>gv=gv", { desc = "Move down block" })
-map("v", "<M-k>", "<cdm>m '<-2<cr>gv=gv", { desc = "Move up block" })
+map("n", "<M-j>", ":move .+1<cr>==", { desc = "Move down" })
+map("n", "<M-down>", ":move .+1<cr>==", { desc = "Move down" })
+map("n", "<M-k>", ":move .-2<cr>==", { desc = "Move up" })
+map("n", "<M-up>", ":move .-2<cr>==", { desc = "Move up" })
+
+map("v", "<M-j>", ":'<,'>move '>+1<cr>gv=gv", { desc = "Move down block" })
+map("v", "<M-down>", ":'<,'>move '>+1<cr>gv=gv", { desc = "Move down block" })
+map("v", "<M-k>", ":'<,'>move '<-2<cr>gv=gv", { desc = "Move up block" })
+map("v", "<M-up>", ":'<,'>move '<-2<cr>gv=gv", { desc = "Move up block" })
 
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Select all
-map("n", "<C-a>", "ggVG")
+map("n", "<M-a>", "ggVG")
 
 -- Кириллица
 local cmap = function(lhs, rhs, desc)
-  -- 'c', 'n', 'o', 'v'
-  map({ "c", "n", "v", "s", "o" }, lhs, rhs, { desc = desc, remap = true })
-  -- vim.cmd.oremap(lhs, rhs)
+    -- 'c', 'n', 'o', 'v'
+    map({ "c", "n", "v", "s", "o" }, lhs, rhs, { desc = desc, remap = true })
+    -- vim.cmd.oremap(lhs, rhs)
 end
 
 cmap("Ж", ":", "Command mode")
