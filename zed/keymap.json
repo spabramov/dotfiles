@@ -1,0 +1,50 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "",
+    "bindings": {
+      "f1": "debugger::StepInto",
+      "f2": "debugger::StepOver",
+      "f3": "debugger::StepOut",
+    },
+  },
+  {
+    "context": "(Editor && showing_completions)",
+    "bindings": {
+      "ctrl-y": "editor::ComposeCompletion",
+    },
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space s t": "pane::DeploySearch",
+      "space s k": "zed::OpenKeymap",
+      "space p": "outline::Toggle",
+      "space o": "tab_switcher::ToggleAll",
+      "ctrl-6": "pane::AlternateFile",
+      "space d b": "editor::ToggleBreakpoint",
+      "space d t": "debugger::Stop",
+      "space t r": "task::Spawn",
+      "space t d": "debugger::Start",
+    },
+  },
+]

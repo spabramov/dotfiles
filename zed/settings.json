@@ -1,0 +1,218 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "which_key": {
+    "delay_ms": 1000,
+    "enabled": true
+  },
+  "excerpt_context_lines": 4,
+  "expand_excerpt_lines": 10,
+  "debugger": {
+    "stepping_granularity": "statement",
+    "log_dap_communications": true,
+  },
+  "lsp": {
+    "basedpyright": {
+      "settings": {},
+    },
+    "pylsp": {
+      "settings": {
+        "plugins": {
+          "mypy": {
+            "enabled": true,
+            "strict": "true",
+            "check_untyped_defs": true,
+            "warn_unreachable": true,
+            "local_partial_types": true,
+          },
+        },
+      },
+    },
+  },
+  "languages": {
+    "YAML": {
+      "format_on_save": "off",
+    },
+    "TOML": {
+      "format_on_save": "on",
+    },
+    "Python": {
+      "format_on_save": "on",
+      "language_servers": [
+        // Disable basedpyright and enable ty, and otherwise
+        // use the default configuration.
+        "basedpyright",
+        "!ty",
+        "...",
+      ],
+    },
+    "Markdown": {
+      "format_on_save": "on",
+    },
+  },
+  "auto_indent_on_paste": true,
+  "completions": {
+    "words": "enabled",
+  },
+  "use_system_prompts": false,
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "icon_theme": "Zed (Default)",
+  "show_wrap_guides": true,
+  "wrap_guides": [99],
+  "context_servers": {},
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true,
+    "enabled": true,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "use_autoclose": false,
+  "show_signature_help_after_edits": true,
+  "close_on_file_delete": true,
+  "use_smartcase_search": true,
+  "tab_bar": {
+    "show": false,
+  },
+  "window_decorations": "client",
+  "bottom_dock_layout": "full",
+  "title_bar": {
+    "show_user_menu": false,
+    "show_user_picture": false,
+    "show_branch_icon": false,
+    "show_sign_in": true,
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+    "active_language_button": true,
+  },
+  "terminal": {
+    "dock": "bottom",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "show_whitespaces": "selection",
+  "toolbar": {
+    "selections_menu": false,
+    "breadcrumbs": true,
+    "quick_actions": false,
+    "code_actions": false,
+    "agent_review": false,
+  },
+  "gutter": {
+    "min_line_number_digits": 3,
+    "folds": false,
+  },
+  "auto_signature_help": false,
+  "project_panel": {
+    "button": true,
+    "hide_gitignore": true,
+    "hide_hidden": true,
+  },
+  "tabs": {
+    "close_position": "left",
+    "file_icons": true,
+    "git_status": true,
+  },
+  "cursor_blink": false,
+  "relative_line_numbers": "enabled",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Dark Soft",
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile.*"],
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Glowbyte LLM 2.0": {
+        "api_url": "https://litellm.ai-portal.glowbyteconsulting.com",
+        "available_models": [
+          {
+            "name": "claude-sonnet-4-20250514",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "claude-3-haiku-20240307",
+            "max_tokens": 200000,
+            "max_output_tokens": 4096,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+      "Glowbyte LLM": {
+        "api_url": "https://llm.glowbyteconsulting.com/api",
+        "available_models": [
+          {
+            "name": "anthropic.claude-3-5-haiku-20241022",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+    "openai": {
+      "api_url": "llm.glowbyteconsulting.com/api",
+      "available_models": [
+        {
+          "name": "anthropic.claude-3-5-haiku-20241022",
+          "display_name": "anthropic.claude-3-5-haiku-20241022",
+          "max_tokens": 128000,
+        },
+      ],
+    },
+  },
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "Glowbyte LLM 2.0",
+      "model": "claude-haiku-4-5-20251001",
+    },
+  },
+}

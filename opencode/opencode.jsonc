@@ -1,0 +1,167 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugin": [
+        "@franlol/opencode-md-table-formatter@0.0.3",
+        "oh-my-opencode-slim"
+    ],
+    "agent": {
+        "plan": {
+            "disable": true
+        },
+        "build": {
+            "disable": true
+        },
+        "explore": {
+            "disable": true
+        },
+        "general": {
+            "disable": true
+        }
+    },
+    "permission": {
+        "edit": "ask",
+        "read": "allow",
+        "task": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "bash": {
+            "*": "ask",
+            "ls *": "allow",
+            "rg *": "allow",
+            "wc *": "allow",
+            "grep *": "allow",
+            "find *": "allow",
+            "head *": "allow",
+            "tail *": "allow",
+            "git *": "allow",
+            "git push *": "deny",
+            "git commit *": "ask"
+        }
+    },
+    "enabled_providers": [
+        "anthropic",
+        "openai",
+        "opencode",
+        "gbc-llm"
+    ],
+    "provider": {
+        "opencode": {
+            "whitelist": [
+                "big-pickle"
+            ]
+        },
+        "anthropic": {
+            "options": {
+                "baseURL": "https://litellm.ai-portal.glowbyteconsulting.com/v1",
+                "apiKey": "{env:ANTHROPIC_AUTH_TOKEN}"
+            },
+            "blacklist": [
+                "claude-haiku-4-5",
+                "claude-sonnet-4-0",
+                "claude-sonnet-4-5",
+                "claude-opus-4-0",
+                "claude-opus-4-1",
+                "claude-opus-4-5"
+            ]
+        },
+        "openai": {
+            "options": {
+                "baseURL": "https://litellm.ai-portal.glowbyteconsulting.com/v1",
+                "apiKey": "{env:ANTHROPIC_AUTH_TOKEN}"
+            },
+            "whitelist": [
+                "gpt-4o",
+                "gpt-4o-mini",
+                "gpt-5",
+                "gpt-5-codex",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "gpt-5.1",
+                "gpt-5.1-chat-latest",
+                "gpt-5.1-codex",
+                "gpt-5.1-codex-mini",
+                "gpt-5.2",
+                "gpt-5.2-codex"
+            ]
+        },
+        "gbc-llm": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Glowbyte LLM",
+            "options": {
+                "baseURL": "https://litellm.ai-portal.glowbyteconsulting.com/v1",
+                "apiKey": "{env:ANTHROPIC_AUTH_TOKEN}"
+            },
+            "models": {
+                "gemini-2.5-flash-lite": {
+                    "name": "Gemini 2.5 Flash Lite"
+                },
+                "gemini-2.5-flash": {
+                    "name": "Gemini 2.5 Flash"
+                },
+                "gemini-2.5-pro": {
+                    "name": "Gemini 2.5 Pro"
+                },
+                "gemini-3-flash-preview": {
+                    "name": "Gemini 3 Flash Preview"
+                },
+                "gemini-3-pro-preview": {
+                    "name": "Gemini 3 Pro Preview"
+                },
+                "grok-4.1-fast": {
+                    "name": "Grok 4.1 Fast"
+                },
+                "grok-code-fast-1": {
+                    "name": "Grok Code 1 Fast"
+                }
+            }
+        }
+    },
+    "mcp": {
+        "context7": {
+            "enabled": true,
+            "type": "remote",
+            "url": "https://mcp.context7.com/mcp",
+            "headers": {
+                "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+            }
+        },
+        "Gitlab": {
+            "enabled": false,
+            "type": "local",
+            "command": [
+                "npx",
+                "-y",
+                "@zereight/mcp-gitlab"
+            ],
+            "environment": {
+                "GITLAB_PERSONAL_ACCESS_TOKEN": "{env:GITLAB_TOKEN}",
+                "GITLAB_API_URL": "https://git.angara.cloud/api/v4",
+                "GITLAB_READ_ONLY_MODE": "false",
+                "GITLAB_TOOLSETS": "merge_requests,issues,repositories,branches,projects,pipeline",
+                "USE_GITLAB_WIKI": "false",
+                "USE_MILESTONE": "false",
+                "USE_PIPELINE": "true",
+                "GITLAB_DENIED_TOOLS_REGEX": "draft_note|release|label|namespace|^(fork_repository|upload_markdown|download_attachment|list_events|get_project_events|list_group_iterations|create_repository|list_group_projects|create_note)$"
+            }
+        },
+        "Jira": {
+            "enabled": false,
+            "type": "local",
+            "command": [
+                "uvx",
+                "mcp-atlassian"
+            ],
+            "environment": {
+                "JIRA_URL": "https://jira.glowbyteconsulting.com",
+                "JIRA_USERNAME": "{env:JIRA_USERNAME}",
+                "JIRA_API_TOKEN": "{env:JIRA_PASSWORD}",
+                "CONFLUENCE_URL": "https://wiki.glowbyteconsulting.com",
+                "CONFLUENCE_USERNAME": "{env:CONFLUENCE_USERNAME}",
+                "CONFLUENCE_API_TOKEN": "{env:CONFLUENCE_PASSWORD}",
+                "JIRA_SSL_VERIFY": "true",
+                "CONFLUENCE_SSL_VERIFY": "true",
+                "ENABLED_TOOLS": "jira_search,jira_get_issue,jira_create_issue,jira_update_issue,jira_add_comment,jira_edit_comment,jira_transition_issue,jira_get_transitions,jira_get_all_projects,jira_get_project_issues,jira_get_agile_boards,jira_get_board_issues,jira_get_sprints_from_board,jira_get_sprint_issues,jira_create_issue_link,jira_get_link_types,jira_remove_issue_link,jira_download_attachments,jira_get_issue_development_info,jira_batch_get_changelogs,jira_search_fields,jira_get_field_options,confluence_search,confluence_get_page,confluence_get_page_children,confluence_create_page,confluence_update_page,confluence_add_comment,confluence_get_comments,confluence_get_labels,confluence_add_label,confluence_get_page_history,confluence_get_attachments,confluence_download_attachment,confluence_upload_attachment"
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "preset": "manual",
+    "disabled_mcps": [
+        "grep_app",
+        "context7"
+    ],
+    "presets": {
+        "manual": {
+            "orchestrator": {
+                "model": "openai/gpt-5.2-codex",
+                "skills": [
+                    "*"
+                ],
+                "mcps": [
+                    "websearch"
+                ]
+            },
+            "oracle": {
+                "model": "openai/gpt-5.2-codex",
+                "variant": "high",
+                "skills": [],
+                "mcps": []
+            },
+            "explorer": {
+                "model": "openai/gpt-5.1-codex-mini",
+                "variant": "low",
+                "skills": [],
+                "mcps": []
+            },
+            "librarian": {
+                "model": "openai/gpt-5.1-codex-mini",
+                "variant": "low",
+                "skills": [],
+                "mcps": [
+                    "websearch",
+                    "context7"
+                ]
+            },
+            "fixer": {
+                "model": "openai/gpt-5.1-codex-mini",
+                "variant": "low",
+                "skills": [],
+                "mcps": []
+            }
+        }
+    },
+    "balanceProviderUsage": false,
+    "fallback": {
+        "enabled": true,
+        "timeoutMs": 15000,
+        "chains": {
+            "orchestrator": [
+                "openai/gpt-5.2-codex",
+                "anthropic/claude-sonnet-4-6"
+            ]
+        }
+    }
+}
