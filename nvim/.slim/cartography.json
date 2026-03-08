@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_run": "2026-03-08T15:05:50.528495Z",
+    "root": "/Users/sergeiabramov/.config/nvim",
+    "include_patterns": [
+      "init.lua",
+      "lua/**/*.lua",
+      "after/**/*.lua",
+      "ftdetect/**/*",
+      "lsp/**/*",
+      "syntax/**/*",
+      "stylua.toml",
+      "lazy-lock.json"
+    ],
+    "exclude_patterns": [
+      "**/*.test.*",
+      "**/*.spec.*",
+      "tests/**",
+      "__tests__/**",
+      "docs/**",
+      "*.md",
+      "LICENSE",
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      "*.min.*"
+    ],
+    "exceptions": []
+  },
+  "file_hashes": {
+    "ftdetect/aml.vim": "4629b99b5d9b9ee30ca9dcde993b0632",
+    "init.lua": "4ceb71378cf3f09f09a8f1e3d1b9fcb2",
+    "lazy-lock.json": "a95a9491c11d0a054e04ccd308403f1c",
+    "lsp/basedpyright.lua": "303e34a27a9d7bbe8f1a686dafe3dfec",
+    "lsp/lua_ls.lua": "77db18b2ec8ea52b93e4cb46e21fcfdc",
+    "lua/autocmd.lua": "f0ae41e9f4334152092fc3ee4a953650",
+    "lua/keymaps.lua": "116973aa1bca1cbdc767d5599c72c689",
+    "lua/options.lua": "b1c674a58f5049c9073ad9d6b070a867",
+    "lua/plugins/blink.lua": "bd111d6a6be94abb800581f6dffcfaad",
+    "lua/plugins/colorscheme.lua": "123eb78d749e9075eb0abe6a7d94022f",
+    "lua/plugins/conform.lua": "77062b51af863c60a6d545cf68d7ff7e",
+    "lua/plugins/dap.lua": "f81bfe41886606a67bb571158228af85",
+    "lua/plugins/fidget.lua": "e93365aba7d2211ef618370882ddbeee",
+    "lua/plugins/lazydev.lua": "edd9fbb06f69c13901dc4571488286aa",
+    "lua/plugins/lint.lua": "6031e1b12fdffe4c4019c212e3c768d2",
+    "lua/plugins/lspconfig.lua": "840e11e3371838bbc04d40af30307cb5",
+    "lua/plugins/mason.lua": "9428a8f35253d61af67b153e7c6284ef",
+    "lua/plugins/maven.lua": "7a398ce02c6182e6f4821f8368db2000",
+    "lua/plugins/metals.lua": "df8e95edc3e55ba9cf8babaeaf96e053",
+    "lua/plugins/mini.lua": "d696815af78184f6195b97d3938c17ce",
+    "lua/plugins/neotest.lua": "56d7a637cc652a5c4687adc3c450f72c",
+    "lua/plugins/rustaceanvim.lua": "ecb3ae21200a6bd88ecf295ac12f35bc",
+    "lua/plugins/snacks.lua": "762d747ec0b9a3533d70ca66c53c9ee6",
+    "lua/plugins/tiny-inline-diagnostics.lua": "0dcad559fbfe88be21428c77e59281ab",
+    "lua/plugins/todo-comments.lua": "ec700eb59db4e3529519ed1b940a5644",
+    "lua/plugins/treesitter.lua": "d4823c2aebe165c10d9326c61db5e57e",
+    "lua/plugins/which-key.lua": "202a85d5b76ed0c48283a50fbfa95f31",
+    "lua/plugins/yazi.lua": "219ec34397c5c4bd7e3477ccda6acc16",
+    "stylua.toml": "e806b8d7308ac5c91b40d960ac079c1e",
+    "syntax/aml.vim": "cf9e12e758b7d7de55f3c26b8415259c"
+  },
+  "folder_hashes": {
+    "lsp": "c5e21c6760fba9deaf04bc849c345bbd",
+    ".": "a087ddabe2686948126acc84d9c3fa63",
+    "ftdetect": "117e93ae264985e87dbcda07a8880e01",
+    "lua": "16c5040ab6abad1b51971a0549974a1e",
+    "syntax": "82f7ecbfc03f2b8509a93dde4e255f29",
+    "lua/plugins": "7bc5f7964e558f70616ee745ee767dcd"
+  }
+}
