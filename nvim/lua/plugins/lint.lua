@@ -17,8 +17,18 @@ return {
             -- lint.linters.pylint.cmd = "python"
             -- lint.linters.pylint.args = { "-m", "pylint", "-f", "json" }
 
-            -- local mypy = lint.linters.mypy
-            -- mypy.cmd = "mypy"
+            local mypy_linter = {
+                cmd = "mypy",
+                -- entry_point = { "mypy" },
+                -- args = { "--incremental", "--no-color-output" },
+                -- checks if the executable is available in the user's PATH
+                condition = function(ctx)
+                    print("aboba")
+                    return vim.fn.exepath(ctx.linter.entry_point[1]) ~= ""
+                end,
+                -- ... other mypy specific configuration
+            }
+            -- lint.linters.mypy = mypy_linter
 
             -- To allow other plugins to add linters to require('lint').linters_by_ft,
             -- instead set linters_by_ft like this:
@@ -58,7 +68,7 @@ return {
             vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
                 group = lint_augroup,
                 callback = function()
-                    require("lint").try_lint()
+                    require("lint").try_lint(nil, { ignore_errors = true })
                 end,
             })
             -- local lint_ns = vim.api.nvim_create_namespace("mypy")

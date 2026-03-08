@@ -28,6 +28,7 @@ return {
                     --    Don't feel like these are good choices.
                     icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
                     controls = {
+                        element = "console",
                         icons = {
                             pause = "⏸",
                             play = "▶",
@@ -40,6 +41,30 @@ return {
                             disconnect = "⏏",
                         },
                     },
+                    layouts = { {
+                        elements = { {
+                            id = "scopes",
+                            size = 0.35
+                        }, {
+                            id = "watches",
+                            size = 0.20
+                        }, {
+                            id = "stacks",
+                            size = 0.25
+                        }, {
+                            id = "breakpoints",
+                            size = 0.20
+                        }, },
+                        position = "left",
+                        size = 40
+                    }, {
+                        elements = { {
+                            id = "console",
+                            size = 1.0
+                        } },
+                        position = "bottom",
+                        size = 10
+                    } },
                 },
             },
 
@@ -66,10 +91,10 @@ return {
             { "<leader>dk", function() require("dap").up() end,                                                   desc = "Up" },
             { "<leader>dl", function() require("dap").run_last() end,                                             desc = "Run Last" },
             { "<leader>dp", function() require("dap").pause() end,                                                desc = "Pause" },
-            { "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Toggle REPL" },
+            { "<leader>dr", function() require("dapui").float_element('repl') end,                                desc = "Toggle REPL" },
             { "<leader>ds", function() require("dap").session() end,                                              desc = "Session" },
             { "<leader>dt", function() require("dap").terminate() end,                                            desc = "Terminate" },
-            { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
+            { "<leader>dw", function() require("dapui").eval() end,                                               desc = "Widgets" },
         },
         config = function()
             local dap = require("dap")
