@@ -9,6 +9,9 @@ maximize=true
 
 theme = gruvbox-material-hard-dark
 
+macos-option-as-alt = true
+
 keybind = shift+up=scroll_page_lines:-50
 keybind = shift+down=scroll_page_lines:50
 
+keybind = shift+enter=text:\x1b\r
