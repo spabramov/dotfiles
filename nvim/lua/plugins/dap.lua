@@ -1,77 +1,20 @@
--- debug.lua
+local function get_args(config)
+    local args = vim.fn.input("Args: ")
+    local args_list = vim.split(args, " +", { trimempty = true })
 
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
+    if type(config) == "table" then
+        config.args = args_list
+        return config
+    end
+
+    return args_list
+end
 
 return {
     {
-        -- NOTE: Yes, you can install new plugins here!
         "mfussenegger/nvim-dap",
         lazy = true,
-        -- NOTE: And you can specify dependencies as well
         dependencies = {
-
-            -- Required dependency for nvim-dap-ui
-            "nvim-neotest/nvim-nio",
-            -- Creates a beautiful debugger UI
-            {
-                "rcarriga/nvim-dap-ui",
-
-                -- Dap UI setup
-                -- For more information, see |:help nvim-dap-ui|
-                opts = {
-                    -- Set icons to characters that are more likely to work in every terminal.
-                    --    Feel free to remove or use ones that you like more! :)
-                    --    Don't feel like these are good choices.
-                    icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
-                    controls = {
-                        element = "console",
-                        icons = {
-                            pause = "⏸",
-                            play = "▶",
-                            step_into = "⏎",
-                            step_over = "⏭",
-                            step_out = "⏮",
-                            step_back = "b",
-                            run_last = "▶▶",
-                            terminate = "⏹",
-                            disconnect = "⏏",
-                        },
-                    },
-                    layouts = { {
-                        elements = { {
-                            id = "scopes",
-                            size = 0.35
-                        }, {
-                            id = "watches",
-                            size = 0.20
-                        }, {
-                            id = "stacks",
-                            size = 0.25
-                        }, {
-                            id = "breakpoints",
-                            size = 0.20
-                        }, },
-                        position = "left",
-                        size = 40
-                    }, {
-                        elements = { {
-                            id = "console",
-                            size = 1.0
-                        } },
-                        position = "bottom",
-                        size = 10
-                    } },
-                },
-            },
-
-            -- Installs the debug adapters for you
-            "williamboman/mason.nvim",
-            -- "jay-babu/mason-nvim-dap.nvim",
-
             -- Add your own debuggers here
             { "mfussenegger/nvim-dap-python", lazy = true },
         },
@@ -108,8 +51,65 @@ return {
 
             vim.fn.sign_define("DapBreakpoint", { text = "⏺", texthl = "Conditional", linehl = "", numhl = "" })
             vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "Conditional", linehl = "", numhl = "" })
-            -- Install golang specific config
+
+            -- Setup for python
             require("dap-python").setup()
         end,
     },
+    -- Creates a beautiful debugger UI
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            -- Required dependency for nvim-dap-ui
+            "nvim-neotest/nvim-nio",
+            "mfussenegger/nvim-dap",
+        },
+
+        -- Dap UI setup
+        -- For more information, see |:help nvim-dap-ui|
+        opts = {
+            -- Set icons to characters that are more likely to work in every terminal.
+            --    Feel free to remove or use ones that you like more! :)
+            --    Don't feel like these are good choices.
+            icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+            controls = {
+                element = "console",
+                icons = {
+                    pause = "⏸",
+                    play = "▶",
+                    step_into = "⏎",
+                    step_over = "⏭",
+                    step_out = "⏮",
+                    step_back = "b",
+                    run_last = "▶▶",
+                    terminate = "⏹",
+                    disconnect = "⏏",
+                },
+            },
+            layouts = { {
+                elements = { {
+                    id = "scopes",
+                    size = 0.35
+                }, {
+                    id = "watches",
+                    size = 0.20
+                }, {
+                    id = "stacks",
+                    size = 0.25
+                }, {
+                    id = "breakpoints",
+                    size = 0.20
+                }, },
+                position = "left",
+                size = 40
+            }, {
+                elements = { {
+                    id = "console",
+                    size = 1.0
+                } },
+                position = "bottom",
+                size = 10
+            } },
+        },
+    }
 }

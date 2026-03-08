@@ -81,28 +81,10 @@ return {
             end,
             desc = "Notification History",
         },
-        -- {
-        --     "<leader>e",
-        --     function()
-        --         Snacks.explorer()
-        --     end,
-        --     desc = "File Explorer",
-        -- },
-        -- find
         {
             "<leader>b",
             function()
-                Snacks.picker.buffers({
-                    win = {
-                        input = {
-                            keys = {
-                                ["dd"] = "bufdelete",
-                                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
-                            },
-                        },
-                        list = { keys = { ["dd"] = "bufdelete" } },
-                    },
-                })
+                Snacks.picker.buffers()
             end,
             desc = "Buffers",
         },
@@ -121,20 +103,6 @@ return {
             desc = "Find Files",
         },
         {
-            "<leader>fg",
-            function()
-                Snacks.picker.git_files()
-            end,
-            desc = "Find Git Files",
-        },
-        {
-            "<leader>fp",
-            function()
-                Snacks.picker.projects()
-            end,
-            desc = "Projects",
-        },
-        {
             "<leader>fr",
             function()
                 Snacks.picker.recent()
@@ -142,13 +110,6 @@ return {
             desc = "Recent",
         },
         -- git
-        {
-            "<leader>gb",
-            function()
-                Snacks.picker.git_branches()
-            end,
-            desc = "Git Branches",
-        },
         {
             "<leader>gl",
             function()
@@ -162,20 +123,6 @@ return {
                 Snacks.picker.git_log_line()
             end,
             desc = "Git Log Line",
-        },
-        {
-            "<leader>gs",
-            function()
-                Snacks.picker.git_status()
-            end,
-            desc = "Git Status",
-        },
-        {
-            "<leader>gd",
-            function()
-                Snacks.picker.git_diff()
-            end,
-            desc = "Git Diff (Hunks)",
         },
         {
             "<leader>gf",
@@ -427,13 +374,6 @@ return {
                 Snacks.scratch.select()
             end,
             desc = "Select Scratch Buffer",
-        },
-        {
-            "<leader>n",
-            function()
-                Snacks.notifier.show_history()
-            end,
-            desc = "Notification History",
         },
         {
             "Q",

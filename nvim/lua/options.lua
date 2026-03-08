@@ -118,22 +118,3 @@ vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
     opts.border = opts.border or 'rounded' -- or whichever border kind you want
     return _open_floating_preview(contents, syntax, opts, ...)
 end
-
--- local _border = "rounded"
---
--- local hover = vim.lsp.buf.hover
--- ---@diagnostic disable-next-line: duplicate-set-field
--- vim.lsp.buf.hover = function()
---     return hover({ border = _border })
--- end
---
--- -- local sig_help = vim.lsp.buf.signature_help
--- ---@diagnostic disable-next-line: duplicate-set-field
--- vim.lsp.buf.signature_help = function()
---     return sig_help({ border = _border })
--- end
---
--- vim.diagnostic.config {
---     float = { border = _border }
--- }
---
