@@ -1,8 +1,10 @@
 initial-command=/opt/homebrew/bin/tmux new -A -s main
 
-font-size = 15
+font-size = 14
 
+window-theme = ghostty
 window-decoration = none
+window-show-tab-bar = auto
 window-padding-balance = true
 window-padding-color = extend-always
 maximize=true
