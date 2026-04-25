@@ -1,0 +1,189 @@
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.efm]
+command = "efm-langserver"
+args = ["-c", "/Users/sergeiabramov/.config/efm-langserver/config.yaml"]
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 20
+snippets_first = true
+feature_words = true
+feature_snippets = true
+feature_unicode_input = true
+feature_paths = true
+
+[language-server.basedpyright.config]
+python.analysis.typeCheckingMode = "off"
+python.analysis.diagnosticSeverityOverrides = { reportAny = false, reportExplicitAny = false, reportUnknownMemberType = false }
+python.analysis.inlayHints = { variableTypes = false, genericTypes = false, callArgumentNames = true }
+
+[language-server.ty.config.inlayHints]
+variableTypes = true
+callArgumentNames = false
+
+[language-server.yaml]
+command = "rlsp-yaml"
+args = ["--stdio"]
+
+[language-server.yaml.config]
+schemaStore = true
+flowStyle = "off"
+
+[language-server.jdtls]
+command = "jdtls"
+environment = { "JAVA_HOME" = "/Users/sergeiabramov/.sdkman/candidates/java/21.0.10-tem/" }
+
+[[language]]
+name = "python"
+language-servers = [ "ty", "ruff", "efm", "scls"]
+auto-format = true
+formatter = { command = "bash", args = ["-c", "ruff check --fix --select=I001 - | ruff format -"] }
+
+[[language]]
+name = "stub"
+scope = "text.stub"
+file-types = []
+shebangs = []
+roots = []
+auto-format = false
+language-servers = ["scls"]
+
+[[language]]
+name = "bash"
+scope = "source.bash"
+injection-regex = "(shell|bash|zsh|sh)"
+file-types = [
+  "sh",
+  "bash",
+  "ash",
+  "dash",
+  "ksh",
+  "mksh",
+  "zsh",
+  "zshenv",
+  "zlogin",
+  "zlogout",
+  "zprofile",
+  "zshrc",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  "Renviron",
+  "zsh-theme",
+  "cshrc",
+  "tcshrc",
+  "bashrc_Apple_Terminal",
+  "zshrc_Apple_Terminal",
+  "env",
+  { glob = "i3/config" },
+  { glob = "sway/config" },
+  { glob = ".tmux.conf" },
+  { glob = "tmux.conf" },
+  { glob = ".sh_history" },
+  { glob = ".bash_history" },
+  { glob = ".bash_login" },
+  { glob = ".bash_logout" },
+  { glob = ".bash_profile" },
+  { glob = ".profile" },
+  { glob = ".zshenv" },
+  { glob = ".zlogin" },
+  { glob = ".zlogout" },
+  { glob = ".zprofile" },
+  { glob = ".zshrc" },
+  { glob = ".zimrc" },
+  { glob = "APKBUILD" },
+  { glob = ".bash_aliases" },
+  { glob = "bash_completion" },
+  { glob = "bash-completion/completions/*" },
+  { glob = "bash_completion.d/*" },
+  { glob = "bin/activate" },
+  { glob = ".Renviron" },
+  { glob = ".xprofile" },
+  { glob = ".xsession" },
+  { glob = ".xsessionrc" },
+  { glob = ".yashrc" },
+  { glob = ".yash_profile" },
+  { glob = ".hushlogin" },
+  { glob = ".xinitrc" },
+  { glob = "xinitrc" },
+  { glob = ".xserverrc" },
+  { glob = "xserverrc" },
+  { glob = "direnvrc" },
+  { glob = ".env" },
+  { glob = ".env.*" },
+]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = ["bash-language-server", "scls"]
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "jsonc"
+scope = "source.json"
+injection-regex = "jsonc"
+file-types = [
+  "jsonc",
+  { glob = "{t,j}sconfig.json" },
+  { glob = "{t,j}sconfig.*.json" },
+  { glob = "bun.lock" },
+  { glob = ".devcontainer.json" },
+  { glob = "devcontainer.json" },
+  { glob = ".vscode/*.json" },
+]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "json"
+language-servers = ["vscode-json-language-server", "scls"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "toml"
+auto-format = true
+language-servers = ["taplo", "tombi", "scls"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "rumdl", "scls"]
+
+[[language]]
+name = "dockerfile"
+language-servers = ["docker-langserver", "docker-language-server", "scls"]
+
+[[language]]
+name = "docker-compose"
+language-id = "dockercompose"
+scope = "source.yaml.docker-compose"
+roots = ["docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml"]
+language-servers = ["docker-compose-langserver", "yaml", "scls"]
+file-types = [
+  { glob = "docker-compose.yaml" },
+  { glob = "docker-compose.yml" },
+  { glob = "compose.yaml" },
+  { glob = "compose.yml" },
+  { glob = "docker-compose*.yaml" },
+  { glob = "docker-compose*.yml" },
+]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+grammar = "yaml"
+auto-format = true
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server", "scls"]
+auto-format = true
+
+[[language]]
+name = "java"
+language-servers = ["jdtls"]
+
+[[language]]
+name = "just"
+language-servers = ["just-lsp"]
+auto-format = true
