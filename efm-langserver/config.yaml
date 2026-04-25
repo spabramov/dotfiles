@@ -1,0 +1,15 @@
+version: 2
+root-markers:
+  - pyproject.toml
+  - mypy.ini
+  - setup.cfg
+  - setup.py
+  - .git
+
+languages:
+  python:
+    - lint-command: "uv run --locked --active --no-sync mypy --show-column-numbers --no-color-output --no-error-summary --hide-error-context $FILENAME"
+      lint-source: "mypy"
+      lint-stdin: false
+      lint-formats:
+        - "%f:%l:%c: %t%*[^:]: %m"
