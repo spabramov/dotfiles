@@ -186,4 +186,4 @@ language-servers = ["jdtls"]
 [[language]]
 name = "just"
 language-servers = ["just-lsp"]
-auto-format = true
+auto-format = false

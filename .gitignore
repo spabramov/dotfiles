@@ -8,3 +8,6 @@ goose/skills
 sourcery
 yandex-cloud
 k9s
+kitty/__pycache__
+kitty/sessions
+helix/runtime/grammars
