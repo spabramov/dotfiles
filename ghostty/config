@@ -1,6 +1,11 @@
 initial-command=/opt/homebrew/bin/tmux new -A -s main
 
+custom-shader=shaders/cursor_warp.glsl
+
 font-size = 14
+font-family = "Ioskeley Mono"
+
+theme = gruvbox-material-hard-dark
 
 window-theme = ghostty
 window-decoration = none
@@ -9,11 +14,4 @@ window-padding-balance = true
 window-padding-color = extend-always
 maximize=true
 
-theme = gruvbox-material-hard-dark
-
 macos-option-as-alt = true
-
-keybind = shift+up=scroll_page_lines:-50
-keybind = shift+down=scroll_page_lines:50
-
-keybind = shift+enter=text:\x1b\r
