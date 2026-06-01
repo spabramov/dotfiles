@@ -3,7 +3,7 @@ theme = "gruvbox"
 [editor]
 line-number = "relative"
 auto-format = true
-auto-pairs = false
+auto-pairs = true
 cursorline = true
 auto-completion = true
 completion-trigger-len = 2
@@ -79,7 +79,7 @@ right = [
 
 [keys.normal]
 x = "select_line_below"
-X = "select_line_above"
+A-x = "select_line_above"
 g = { right = "goto_line_end", left = "goto_line_start" }
 C-p = ["move_line_up", "scroll_up"]
 C-n = ["move_line_down", "scroll_down"]
