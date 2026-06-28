@@ -2,3 +2,9 @@ git:
   pagers:
     - colorArg: always
       pager: "delta --dark --paging=never"
+
+os:
+  edit: 'LAZYGIT_PID=$PPID /Users/sergeiabramov/.local/bin/lazygit-hx-edit {{filename}}'
+  editAtLine: 'LAZYGIT_PID=$PPID /Users/sergeiabramov/.local/bin/lazygit-hx-edit {{filename}} {{line}}'
+  editAtLineAndWait: 'LAZYGIT_PID=$PPID /Users/sergeiabramov/.local/bin/lazygit-hx-edit {{filename}} {{line}}'
+  editInTerminal: true
